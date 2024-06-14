@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>HOSPITAL MANAGEMENT SYSTEM</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/8ddb3cdf81.js" crossorigin="anonymous"></script>
+    <style>
+        /* Your CSS styles here */
+        div {
+            
+            text-size-adjust: 100px;
+        }
+
+        ul {
+    list-style-type: circle;
+    display: inline-block;
+    position: absolute;
+    top: 20px; /* Adjust the top position as needed */
+    left: 20px; /* Adjust the left position as needed */
+    z-index: 1000; /* Ensure it's above other content */
+}
+
+li {
+            margin-right: 20px; /* Add some spacing between items */
+            
+        }
+        body {
+            cursor: pointer;
+            border: 200px solid white; /* add a 1px solid black border */
+            padding: 10px;
+            background-image: url("pic.jpg");
+ 
+        }
+
+        h1 {
+            transform: scale(0.5);
+            transform-origin: center;
+            text-align: center;
+            background: linear-gradient(90deg, blue, #00FFFF 50%);
+            color: black;
+           
+        }
+    </style>
+</head>
+
+<body>
+    <img src="mg.png" alt="">
+    
+    <h1>HOSPITAL MANAGEMENT SYSTEM</h1>
+    <header id="header" class="fixed-top d-flex justify-content-center align-items-center header-transparent">
+        <nav id="navbar2" class="navbar2">
+            <ul>
+                <li><a class="nav-link scrollto active" href="#user" onclick="showUserSection()">USER</a></li>
+                <li><a class="nav-link scrollto" href="#admin" onclick="showAdminSection()">ADMIN</a></li>
+                <li><a class="nav-link scrollto" href="#patient" onclick="showPatientSection()">PATIENT</a></li>
+                <li><a class="nav-link scrollto" href="#doctor" onclick="showDoctorSection()">DOCTOR</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+    </header><!-- End Header -->
+
+    <section id="hero">
+        <div class="hero-container">
+            <img src="mg.png" alt="">
+        
+            <a href="#about" class="btn-scroll scrollto" title="Scroll Down"><i class="bx bx-chevron-down"></i></a>
+        </div>
+    </section><!-- End Hero -->
+    <main id="main">
+        <!-- Users Table Section -->
+        <div id="userSection" style="display: none;">
+            <section class="user">
+                <div align="center">
+                    <h1 align="center">Add user</h1>
+                    <!-- Your users table form here -->
+                    <form action="/add-user" method="POST">
+                        <table class="table">
+                            <thead>
+                                <tr class="table-active">
+                                    <th>Name</th>
+                                    <th>U_id</th>
+                                    <th>email</th>
+                                    <th>password</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td> <input type="text" name="Name" placeholder="Enter the user name?"
+                                            required></input></td>
+                                    <td><input type="text" name="U_id"></td>
+                                    <td> <input type="text" name="email"></td>
+                                    <td> <input type="password" name="password"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div align="center"><input type="submit" class="btn btn-success" value="login user"></div>
+                    </form>
+                </div>
+            </section>
+        </div>
+
+        <!-- Admin Table Section -->
+        <div id="adminSection" style="display: none;">
+            <section class="admin">
+                <div align="center">
+                    <h1 align="center">Admin</h1>
+                    <!-- Your admin table form here -->
+                    <form action="/Admin" method="POST">
+                        <table class="table">
+                            <thead>
+                                <tr class="table-active">
+                                    <th>Admin_Name</th>
+                                    <th>password</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td> <input type="text" name="Admin_Name" placeholder="Enter the admin name?"
+                                            required></input></td>
+                                    <td> <input type="password" name="password"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div align="center"><input type="submit" class="btn btn-success" value="Admin_login"></div>
+                    </form>
+                </div>
+            </section>
+        </div>
+
+        <!-- Patient Table Section -->
+        <div id="patientSection" style="display: none;">
+            <section class="patient">
+                <div align="center">
+                    <h1 align="center">Add patient</h1>
+                    <!-- Your patient table form here -->
+                    <form action="/patient" method="POST">
+                        <table class="table">
+                            <thead>
+                                <tr class="table-active">
+                                    <th>Name</th>
+                                    <th>card_id</th>
+                                    <th>gender</th>
+                                    <th>Age</th>
+                                    <th>address</th>
+                                    <th>Phone</th>
+                                    <th>Department</th>
+                                    <th>Doctor_name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td> <input type="text" name="Name" placeholder="Enter the patient name?"
+                                            required></input></td>
+                                    <td><input type="text" name="card_id"></td>
+                                    <td> <input type="text" name="gender"></td>
+                                    <td><input type="text" name="Age"></td>
+                                    <td><input type="text" name="address"></td>
+                                    <td><input type="text" name="Phone"></td>
+                                    <td><input type="text" name="Department"></td>
+                                    <td><input type="text" name="Doctor_name"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div align="center"><input type="submit" class="btn btn-success" value="add patient"></div>
+                    </form>
+                </div>
+            </section>
+        </div>
+
+        <!-- Doctor Table Section -->
+        <div id="doctorSection" style="display: none;">
+            <section class="doctor">
+                <div align="center">
+                    <h1 align="center">Add Doctor</h1>
+                    <!-- Your doctor table form here -->
+                    <form action="/doctor" method="POST">
+                        <table class="table">
+                            <thead>
+                                <tr class="table-active">
+                                    <th>Name</th>
+                                    <th>Doctor_id</th>
+                                    <th>gender</th>
+                                    <th>address</th>
+                                    <th>Phone</th>
+                                    <th>Date_of_join</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td> <input type="text" name="Name" placeholder="Enter the Doctor name?"
+                                            required></input></td>
+                                            <td><input type="text" name="Doctor_id"></td>
+                                    <td> <input type="text" name="gender" required></td>
+                                    <td><input type="text" name="address"></td>
+                                    <td><input type="text" name="Phone"></td>
+                                    <td><input type="date" name="Date"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div align="center"><input type="submit" class="btn btn-success" value="doctor login"></div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+    <form action="/delete-user" method="GET">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Select</th>
+              <th>Name</th>
+              <th>U_id</th>
+              <th>email</th>
+              <th>password</th>
+            </tr>
+          </thead>
+          <% for(let i of task) { %>
+            <tr>
+                
+              <td> <input type="checkbox" name="<%= i._id %>" ></td>
+              <td> <p id="task-Name"><%= i.Name %></td>
+                <td> <p id="task-Name"><%= i.U_id %></td>
+                    <td> <p id="task-Name"><%= i.email %></td>
+                        <td><p id="password">:********</p></td>
+
+            </tr>
+          <% } %>
+        </table>
+        
+<div  align = "center"><input type="submit" class="btn btn-danger" value="DELETE USERS">
+      </div>></form>
+
+      <form action="/delete-Admin" method="GET">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Select</th>
+              <th>Admin_Name</th>
+              <th>password</th>
+            </tr>
+          </thead>
+          <% for(let i of adm) { %>
+            <tr>
+                
+              <td> <input type="checkbox" name="<%= i._id %>" ></td>
+              <td> <p id="Admin-Name"><%=i.Admin_Name %></td>
+                <td><p id="password">:********</p></td>
+                       
+            </tr>
+          <% } %>
+        </table>
+        
+<div  align = "center"><input type="submit" class="btn btn-danger" value="DELETE ADMINS">
+      </div>></form>
+ <!--delete patients-->
+ <form action="/delete-patient" method="GET">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Select</th>
+          <th>Name</th>
+          <th>card_id</th>
+          <th>gender</th>
+          <th>Age</th>
+          <th>address</th>
+          <th>Phone</th>
+          <th>Department</th>
+          <th>Doctor_name</th>
+        </tr>
+      </thead>
+      <% for(let i of pt) { %>
+        <tr>
+            
+          <td> <input type="checkbox" name="<%= i._id %>" ></td>
+          <td> <p id="patient-Name"><%=i.Name %></td>
+            <td> <p id="card-id"><%=i.card_id%></td>
+            <td> <p id="gender"><%=i.gender %></td>
+          <td> <p id="Age"><%=i.Age %></td>
+            <td> <p id="address"><%=i.address %></td>
+            <td> <p id="phone"><%=i.Phone %></td>
+                <td> <p id="Department"><%=i.Department %></td>
+                    <td> <p id="Doctor_name"><%=i.Doctor_name %></td>
+            
+                   
+        </tr>
+      <% } %>
+    </table>
+    
+<div  align = "center"><input type="submit" class="btn btn-danger" value="REMOVE PATIENTS">
+  </div>></form>
+  <!--deleting the doctors-->
+  <form action="/delete-doctor" method="GET">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Select</th>
+          <th>Name</th>
+          <th>Doctor_id</th>
+          <th>gender</th>
+          <th>address</th>
+          <th>Phone</th>
+          <th>Date of join</th>
+        </tr>
+      </thead>
+      <% for(let i of dr) { %>
+        <tr>
+            
+          <td> <input type="checkbox" name="<%= i._id %>" ></td>
+          <td> <p id="doctor-Name"><%=i.Name %></td>
+            <td> <p id="Doctor-id"><%=i.Doctor_id%></td>
+            <td> <p id="gender"><%=i.gender %></td>
+            <td> <p id="address"><%=i.address %></td>
+            <td> <p id="phone"><%=i.Phone %></td> 
+           <td> <p id="Date"><%=i.Date %></td>
+           
+                   
+        </tr>
+      <% } %>
+    </table>
+    
+<div  align = "center"><input type="submit" class="btn btn-danger" value="REMOVE DOCTOR">
+  </div>></form>
+
+    <script>
+        function showUserSection() {
+            document.getElementById('userSection').style.display = 'block';
+            document.getElementById('adminSection').style.display = 'none';
+            document.getElementById('patientSection').style.display = 'none';
+            document.getElementById('doctorSection').style.display = 'none';
+        }
+
+        function showAdminSection() {
+            document.getElementById('userSection').style.display = 'none';
+            document.getElementById('adminSection').style.display = 'block';
+            document.getElementById('patientSection').style.display = 'none';
+            document.getElementById('doctorSection').style.display = 'none';
+        }
+
+        function showPatientSection() {
+            document.getElementById('userSection').style.display = 'none';
+            document.getElementById('adminSection').style.display = 'none';
+            document.getElementById('patientSection').style.display = 'block';
+            document.getElementById('doctorSection').style.display = 'none';
+        }
+
+        function showDoctorSection() {
+            document.getElementById('userSection').style.display = 'none';
+            document.getElementById('adminSection').style.display = 'none';
+            document.getElementById('patientSection').style.display = 'none';
+            document.getElementById('doctorSection').style.display = 'block';
+        }
+    </script>
+
+</body>
+
+</html>
